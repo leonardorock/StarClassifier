@@ -40,7 +40,6 @@ print(df['Spectral_Class'].mode())
 
 star_color = LabelEncoder()
 star_color_types = star_color.fit_transform(df['Color'])
-star_color_map = {index: label for index, label in 
-                  enumerate(star_color.classes_)}
+star_color_map = { index: label for index, label in enumerate(star_color.classes_) }
 
 print(star_color_map)
