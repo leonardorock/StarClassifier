@@ -1,5 +1,4 @@
 import pandas as pd
-#import numpy as np
 import matplotlib.pyplot as plt
 from pandas import DataFrame as df
 from scipy.stats import zscore
@@ -9,18 +8,17 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn import tree
 from sklearn.metrics import accuracy_score, precision_score, classification_report
 
-
-#pegando os dados do csv, trocando brancos por NaN
+# loading csv data, replacing empty data with NaN
 df = pd.read_csv("input/stars.csv", na_values=' ')
 
-# olhando alguns detalhes 
+# displaying some details
 print(df.head())
 print(df.describe())
 
-#fazendo uma cópia
+# copying data set
 df2 = df.copy()
 
-#removendo os NaN
+# removing NaN
 df2.dropna(inplace=True)
 print(df2.isna().sum())
 
@@ -34,6 +32,7 @@ absolute_magnitude_mean_without_nan = df2['A_M'].mean()
 absolute_magnitude_median_without_nan = df2['A_M'].median()
 print(absolute_magnitude_mean_without_nan, absolute_magnitude_median_without_nan)
 
+# adjusting df with median
 df['Temperature'].fillna(temperature_median_without_nan, inplace=True)
 df['A_M'].fillna(absolute_magnitude_median_without_nan, inplace=True)
 
@@ -55,7 +54,7 @@ df['Spectral_Class'].fillna(spectral_class_mode, inplace=True)
 df['A_M_zscore'] = zscore(df['A_M'])
 print(df[['A_M', 'A_M_zscore']])
 
-# removing outliers in IMC
+# removing outliers in Absolute Magnitude
 df.drop(df[df.A_M_zscore >= 3].index, inplace=True)
 print(df[['A_M', 'A_M_zscore']])
 
