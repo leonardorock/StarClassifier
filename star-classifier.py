@@ -90,7 +90,7 @@ df.drop(columns=['A_M_zscore'], inplace=True)
 print(df)
 
 # creating data frames for decision tree
-cols_X = df[["L","R"]]
+cols_X = df[["Temperature", "L","R", "A_M"]]
 cols_y = df[['Type']]
 df_X = cols_X.copy()
 df_y = cols_y.copy()
@@ -98,7 +98,7 @@ print(df_X)
 print(df_y)
 
 # separating the data set for train and testing
-X_train, X_test, y_train, y_test = train_test_split(df_X, df_y, test_size=0.5, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(df_X, df_y, test_size=0.9, random_state=42)
 
 # basic parameters
 dt_classifier = DecisionTreeClassifier(criterion='entropy', max_depth=5, random_state=1)
