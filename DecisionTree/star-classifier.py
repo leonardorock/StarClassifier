@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from pandas import DataFrame as df
 from scipy.stats import zscore
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
