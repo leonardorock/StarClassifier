@@ -5,7 +5,7 @@ from sklearn import neural_network as nn
 from sklearn.exceptions import ConvergenceWarning
 
 # taxa de aprendizado
-lr = 0.5
+lr = 0.85
 
 X = genfromtxt(open('input/dataset.csv', 'r', encoding='utf-8-sig'), delimiter=';', dtype=float, missing_values='', filling_values=0)
 T = genfromtxt(open('input/dataset_results.csv', 'r', encoding='utf-8-sig'), delimiter=';', dtype=float, missing_values='', filling_values=0)
@@ -50,7 +50,7 @@ W = genfromtxt(open('test/test_data_results.csv', 'r', encoding='utf-8-sig'), de
 #               [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],  #J
 #               [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1]]) #O
          
-mlp = nn.MLPClassifier(hidden_layer_sizes=(40,), max_iter=240, alpha=1e-4, solver='sgd', verbose=10, random_state=1, learning_rate_init=lr)
+mlp = nn.MLPClassifier(hidden_layer_sizes=(40,), max_iter=1000, alpha=1e-4, solver='sgd', verbose=10, random_state=1, learning_rate_init=lr, activation='logistic')
 
 # treino
 print('#################### EXECUCAO ####################')
