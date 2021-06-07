@@ -8,7 +8,7 @@ from sklearn.exceptions import ConvergenceWarning
 from sklearn.model_selection import train_test_split
 
 # taxa de aprendizado
-lr = 0.003
+lr = 0.002
 
 dataset = pd.read_csv("input/stars.csv", na_values=' ')
 
@@ -19,7 +19,7 @@ T = dataset[["Type"]].copy()
 
 X_train, X_test, y_train, y_test = train_test_split(X, T, test_size=0.35, random_state=42)
          
-mlp = nn.MLPClassifier(hidden_layer_sizes=(256,128), max_iter=5000, alpha=1e-4, solver='adam', verbose=10, random_state=1, learning_rate_init=lr, activation='relu', n_iter_no_change=500)
+mlp = nn.MLPClassifier(hidden_layer_sizes=(8,8,8,8), max_iter=5000, alpha=1e-4, solver='adam', verbose=10, random_state=1, learning_rate_init=lr, activation='relu', n_iter_no_change=1000)
 
 # treino
 print('#################### EXECUCAO ####################')
